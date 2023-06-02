@@ -1,4 +1,4 @@
-import { Request, Response, Requests, Responses, Noop } from "./types";
+import { Noop, Request, Requests, Response, Responses } from "./types";
 
 /**
  * Internal helper type to merge to other object types together. This gives you
