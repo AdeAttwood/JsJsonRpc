@@ -1,5 +1,5 @@
-import { JsonRpcService } from "../src/service";
 import { JsonRpcClient } from "../src/client";
+import { JsonRpcService } from "../src/service";
 
 const notifyMe = jest.fn();
 const notificationService = new JsonRpcService({ notifyMe });

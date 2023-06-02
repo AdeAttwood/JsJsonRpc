@@ -1,8 +1,8 @@
-import { JsonRpcService } from "../src/service";
 import { JsonRpcClient } from "../src/client";
+import { JsonRpcService } from "../src/service";
 
 const echoService = new JsonRpcService({
-  ping({}) {
+  ping() {
     return { text: "pong" };
   },
   hasParams({ name }: { name: string }, context: { prefix: string }) {
@@ -17,7 +17,7 @@ client.sender = async (request) => {
 };
 
 it("will send and receive messages", async () => {
-  const { text } = await client.call("ping", {});
+  const { text } = await client.call("ping", undefined);
   expect(text).toBe("pong");
 });
 

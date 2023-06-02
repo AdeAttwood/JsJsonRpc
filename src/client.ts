@@ -1,4 +1,4 @@
-import { Request, Requests, Response, Responses, Noop } from "./types";
+import { Noop, Request, Requests, Response, Responses } from "./types";
 
 /**
  * The callback function that will be called to send the request to the server.
@@ -24,7 +24,9 @@ export class JsonRpcClient<T extends { [k: string]: any }> {
    * by the developer using the client to send the request via the correct
    * protocol.
    */
-  sender: Handler = () => {};
+  sender: Handler = () => {
+    /* Do nothing */
+  };
   /**
    * A handler function to receive the response from the server. It will
    * resolve the promise captured by the `call` method.
