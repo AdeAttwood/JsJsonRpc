@@ -1,4 +1,4 @@
-import { Noop, Request, Requests, Response, Responses } from "./types";
+import { IfMaybeUndefined, Noop, Request, Requests, Response, Responses } from "./types";
 
 /**
  * The callback function that will be called to send the request to the server.
@@ -44,7 +44,11 @@ export class JsonRpcClient<T extends { [k: string]: any }> {
    */
   call<Method extends keyof T>(
     method: Method,
-    params: Requests<T>[Method][0]
+    ...[params]: IfMaybeUndefined<
+      Requests<T>[Method][0],
+      [params?: Requests<T>[Method][0]],
+      [params: Requests<T>[Method][0]]
+    >
   ): Promise<NonNullable<Responses<T>[Method]["result"]>> {
     const requestData = { jsonrpc: "2.0", id: this.id++, method: method.toString(), params } as const;
     return new Promise<NonNullable<Responses<T>[Method]["result"]>>((resolve, reject) => {
