@@ -17,7 +17,7 @@ client.sender = async (request) => {
 };
 
 it("will send and receive messages", async () => {
-  const { text } = await client.call("ping", undefined);
+  const { text } = await client.call("ping");
   expect(text).toBe("pong");
 });
 

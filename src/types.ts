@@ -88,3 +88,5 @@ export type Responses<Methods extends Record<string, Noop>> = {
 export type Requests<Methods extends Record<string, Noop>> = {
   [Method in keyof Methods]: Parameters<Methods[Method]>;
 };
+
+export type IfMaybeUndefined<T, True, False> = [undefined] extends [T] ? True : False;
